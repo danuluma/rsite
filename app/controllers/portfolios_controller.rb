@@ -39,7 +39,7 @@ class PortfoliosController < ApplicationController
 
     #redirect to portfolio
     respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: 'ITEM was successfully destroyed.' }
+      format.html { redirect_to portfolio_url, notice: 'ITEM was successfully destroyed.' }
     end
   end
 
