@@ -5,12 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+3.times do |topic|
+  Topic.create!(
+    title: "Topic #{topic}"
+    )
+end
+puts "3 topics created"
+
 10.times do |blog|
   Blog.create!(
       title: "My blog post #{blog}",
-      body: "gfucvguawfvceyvwqfciyvqifcyhqwevfcveifciygvabfiygiaqfcihyavbgbdahcbqikasevhisevbfiwsvbchiksvikhv gfuiqgfcbqaf fqwesfbe fvvgf evgeqag eqgg4rewg4rewgr 2wgrw2gr wgrgwrahrew hwhe4h"
+      body: "gfucvguawfvceyvwqfciyvqifcyhqwevfcveifciygvabfiygiaqfcihyavbgbdahcbqikasevhisevbfiwsvbchiksvikhv gfuiqgfcbqaf fqwesfbe fvvgf evgeqag eqgg4rewg4rewgr 2wgrw2gr wgrgwrahrew hwhe4h",
+      topic_id: Topic.last.id
     )
 end
+puts "10 blogs created"
 
 5.times do |skills|
   Skill.create!(
@@ -21,10 +31,23 @@ end
 
 puts "5 Skills created"
 
-9.times do |portfolio_item|
+8.times do |portfolio_item|
   Portfolio.create!(
     title: "Portfolio title: #{portfolio_item}",
-    subtitle: "My great service",
+    subtitle: "Rails",
+    body: "The curriculum includes everything that’s required to fully grasp the fundamentals of
+computer science, and gain a thorough understanding of computer science best
+practices through Python. By covering this curriculum, you will be comfortable with
+computing concepts -- empowering you to engage with a vibrant community of like-
+minded learners with all levels of experience.",
+    main_image: "http://via.placeholder.com/600x400",
+    thumb_image: "http://via.placeholder.com/350x200"
+    )
+end
+1.times do |portfolio_item|
+  Portfolio.create!(
+    title: "Portfolio title: #{portfolio_item}",
+    subtitle: "Angular",
     body: "The curriculum includes everything that’s required to fully grasp the fundamentals of
 computer science, and gain a thorough understanding of computer science best
 practices through Python. By covering this curriculum, you will be comfortable with
@@ -36,3 +59,11 @@ minded learners with all levels of experience.",
 end
 
 puts "9 Portfolio items created"
+
+3.times do |technology|
+  Portfolio.last.technologies.create!(
+    name: "Technology #{technology}"
+    )
+end
+
+puts "3 Technologies items created"
