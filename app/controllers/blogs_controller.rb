@@ -18,7 +18,9 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
+
     @blog = Blog.new
+
   end
 
   # GET /blogs/1/edit
@@ -29,7 +31,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
-
+    # byebug 
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog created, lala sasa' }
@@ -83,6 +85,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :body)
+      params.require(:blog).permit(:title, :body, :topic_id, :status)
     end
 end
