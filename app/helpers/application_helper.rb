@@ -17,4 +17,8 @@ module ApplicationHelper
     end
     
   end
+
+  def copyright_generator
+   DanViewTool::Renderer.copyright "Dan", "All rights reserved"
+  end
 end

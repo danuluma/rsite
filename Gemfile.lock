@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/danuluma/dan_view_tool.git
+  revision: c71c9a4383187bc522dcf352d9efd42e3d4b53fe
+  specs:
+    dan_view_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -205,6 +211,7 @@ DEPENDENCIES
   bootstrap (~> 4.1.1)
   byebug
   coffee-rails (~> 4.2)
+  dan_view_tool!
   devise (~> 4.4, >= 4.4.3)
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
