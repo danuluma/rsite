@@ -16,34 +16,20 @@
   </head>
 
   <body>
-<!--  start of header
- -->
+
  <%= render "shared/portfolio_nav" %> 
 
- <!--  end of header
- -->
- <main role="main">
-<!--  start of masthead
- --> 
 
-    <%= render "shared/portfolio_masthead" %>   
-<!--  end of masthead
- -->   
+ <main role="main">
+
+    <%= render "shared/portfolio_masthead" unless logged_in?(:site_admin) %>   
+ 
  </main> 
 
- 
-      
     <%= yield %>
 
     <%= render "shared/portfolio_footer" %>  
 
-   <!--  start of footer -->
-
-  
-    <!--  end of footer -->
-
-
-  
    <%= source_helper("application") %>
   </body>
 </html>
