@@ -1,16 +1,26 @@
-<p id="notice"><%= notice %></p>
+<!-- start of blog content -->
 
-<%= @blog.inspect %>
+<div class="col-md-8 blog-main">
+  <h3 class="pb-3 mb-4 font-italic border-bottom">
+    <%= link_to 'Write a New Blog', new_blog_path if logged_in?(:site_admin)%>
+  </h3>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+  <h2>
+    <%= @blog.title %>
+  </h2>
+  <%= link_to 'Edit', edit_blog_path(@blog) if logged_in?(:site_admin)%>
+  <p>
+    <%= @blog.body %>
+  </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
 
-<%= link_to 'Edit', edit_blog_path(@blog) if logged_in?(:site_admin)%> |
-<%= link_to 'Back', blogs_path %>
+
+
+</div>
+<!-- end of blog content -->
+
+
+
+
+
+
