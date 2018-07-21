@@ -59,6 +59,8 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'petergate'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
+gem 'kaminari'
 
 gem 'dan_view_tool', git: "https://github.com/danuluma/dan_view_tool.git"
 
