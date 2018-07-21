@@ -1,23 +1,26 @@
-<p id="notice"><%= notice %></p>
+<!-- start of blog content -->
 
-<h1>Blogs</h1>
+<div class="col-md-8 blog-main">
+  <h3 class="pb-3 mb-4 font-italic border-bottom">
+    <%= link_to 'Write a New Blog', new_blog_path if logged_in?(:site_admin)%>
+  </h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+  <%= render @blogs %>
 
-  <tbody>
-    <%= render @blogs %>
-      
-    
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin)%>
+
+
+  <nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+  </nav>
+
+</div>
+<!-- end of blog content -->
+
+
+
+
+
+
