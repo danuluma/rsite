@@ -61,6 +61,7 @@ gem 'jquery-rails'
 gem 'petergate'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 gem 'dan_view_tool', git: "https://github.com/danuluma/dan_view_tool.git"
 
