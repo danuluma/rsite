@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: danuluma
+  api_key: '122664579787367'
+  api_secret: fKa4Rw9abmTpTPuH5w9J7cxcwxc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: danuluma
+  api_key: '122664579787367'
+  api_secret: fKa4Rw9abmTpTPuH5w9J7cxcwxc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: danuluma
+  api_key: '122664579787367'
+  api_secret: fKa4Rw9abmTpTPuH5w9J7cxcwxc
+  enhance_image_tag: true
+  static_image_support: false

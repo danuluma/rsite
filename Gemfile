@@ -61,6 +61,12 @@ gem 'jquery-rails'
 gem 'petergate'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem 'carrierwave-aws', '~> 1.3'
+gem 'dotenv-rails', '~> 2.5'
+
+gem 'cloudinary', '~> 1.9', '>= 1.9.1'
 
 gem 'dan_view_tool', git: "https://github.com/danuluma/dan_view_tool.git"
 
