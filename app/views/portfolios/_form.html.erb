@@ -1,6 +1,16 @@
 
 
 <%= form_for(@portfolio_item) do |form| %>
+
+<% if @portfolio_item.errors.any? %>
+<%= js add_gritter("&copy", title: pluralize(@portfolio_item.errors.count, 'error') + " prohibited this portfolio item from being saved:"  )%>
+
+<% @portfolio_item.errors.full_messages.each do |message| %>
+<%= js add_gritter(message, title: "Anericod") %>
+
+<% end %>
+ <% end %>
+
 <div class="row">
   <div class="col-md-6">
 

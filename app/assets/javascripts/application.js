@@ -19,4 +19,5 @@
 //= require html_sortable
 //= require cocoon
 //= require turbolinks
+//= require gritter
 //= require_tree .
