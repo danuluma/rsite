@@ -69,6 +69,7 @@ gem 'carrierwave-aws', '~> 1.3'
 gem 'dotenv-rails', '~> 2.5'
 
 gem 'cloudinary', '~> 1.9', '>= 1.9.1'
+gem 'twitter', '~> 6.2'
 
 
 

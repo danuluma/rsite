@@ -30,6 +30,9 @@ module DevcampProject
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    #My additions(dan)
+    config.eager_load_paths << "#{Rails.root}/lib"
+
   
   end
 end
