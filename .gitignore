@@ -27,4 +27,6 @@
 /config/credentials.yml
 
 /.env
+
+
 .env
