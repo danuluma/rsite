@@ -28,5 +28,5 @@
 
 /.env
 
-
+/config/cloudinary.yml
 .env

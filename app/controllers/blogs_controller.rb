@@ -13,6 +13,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.includes(:comments).friendly.find(params[:id])
+    @comment = Comment.new
     @blog = Blog.friendly.find(params[:id])
     @page_title = @blog.title
   end
@@ -71,14 +73,14 @@ class BlogsController < ApplicationController
   def toggle_status
     if @blog.published? 
      @blog.draft!
-    elsif @blog.draft? 
+   elsif @blog.draft? 
      @blog.published!
-    end
+   end
 
-    redirect_to blogs_url
-  end
+   redirect_to blogs_url
+ end
 
-  private
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
       @blog = Blog.friendly.find(params[:id])
@@ -88,4 +90,4 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :body, :topic_id, :status)
     end
-end
+  end
