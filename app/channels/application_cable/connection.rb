@@ -21,9 +21,11 @@ module ApplicationCable
       
     end
 
+    protected
+
     def find_verified_user
-      if verified_user = env["warden"].user
-        verified_user
+      if current_user = env["warden"].user
+        current_user
       end
     end
   end

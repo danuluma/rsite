@@ -62,10 +62,10 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
-    # perfom lookup
+    # perform lookup
     @portfolio_item = Portfolio.find(params[:id])
 
-    #perfom deletion
+    #perform deletion
     @portfolio_item.destroy
 
     #redirect to portfolio
