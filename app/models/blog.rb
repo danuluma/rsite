@@ -8,6 +8,8 @@ class Blog < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_paper_trail
+
   def self.special_blogs
     all
     

@@ -78,6 +78,7 @@ gem 'twitter', '~> 6.2'
 
 gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'gritter', '~> 1.2'
+gem "paper_trail"
 
 
 
