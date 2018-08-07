@@ -38,6 +38,8 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog created, lala sasa' }
+
+       
         
       else
         format.html { render :new }
@@ -51,11 +53,20 @@ class BlogsController < ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog updated pewa mbili ' }
+
+         #flash[:success] = "Post was updated! #{make_undo_link}"
+        # redirect_to blog_path(@blog)
+
+
+        # undo_link = view_context.link_to("undo", revert_version_path(@product.versions.last), :method => :post)
+
+        format.html { redirect_to @blog, notice: "Post was updated! #{make_undo_link}" }
+
+        # format.html { redirect_to @blog, notice: 'Blog updated pewa mbili ' }
         
       else
         format.html { render :edit }
-        f
+        
       end
     end
   end
@@ -73,21 +84,53 @@ class BlogsController < ApplicationController
   def toggle_status
     if @blog.published? 
      @blog.draft!
-   elsif @blog.draft? 
+    elsif @blog.draft? 
      @blog.published!
-   end
-
-   redirect_to blogs_url
- end
-
- private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.friendly.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
-      params.require(:blog).permit(:title, :body, :topic_id, :status)
+    redirect_to blogs_url
+  end
+
+ 
+ # papertrail
+
+  def history
+  @versions = PaperTrail::Version.order('created_at DESC')
+  end
+
+  def undo
+    @blog_version = PaperTrail::Version.find_by_id(params[:id])
+
+    begin
+      if @blog_version.reify
+        @blog_version.reify.save
+      else
+        # For undoing the create action
+        @blog_version.item.destroy
+      end
+      flash[:success] = "Undid that!"
+    rescue
+      flash[:alert] = "Failed undoing the action..."
+    ensure
+      redirect_to root_path
     end
   end
+
+  private
+
+  def make_undo_link
+   
+    view_context.link_to 'Undo that plz!', undo_path(@blog.versions.last), method: :post
+    
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_blog
+    @blog = Blog.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def blog_params
+    params.require(:blog).permit(:title, :body, :topic_id, :status)
+  end
+end
