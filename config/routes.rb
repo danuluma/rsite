@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get "contact", to: "pages#contact"
   get "about-me", to: "pages#about"
 
- 
+  
+
+  post "versions/:id/revert", to: "versions#revert", as: :revert_version
+
+
 
   resources :blogs do
     member do
