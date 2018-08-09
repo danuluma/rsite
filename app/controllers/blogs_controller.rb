@@ -47,13 +47,10 @@ class BlogsController < ApplicationController
     # byebug 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog created, lala sasa' }
+        format.html { redirect_to @blog, notice: "Blog created, lala sasa #{undo_link}" }
 
-        
-        
       else
-        format.html { render :new }
-        
+        format.html { render :new }  
       end
     end
   end
@@ -70,7 +67,7 @@ class BlogsController < ApplicationController
 
         # undo_link = view_context.link_to("undo", revert_version_path(@product.versions.last), :method => :post)
 
-        format.html { redirect_to @blog, notice: "Post was updated! #{make_undo_link}" }
+        format.html { redirect_to @blog, notice: "Post was updated! #{undo_link}" }
 
         # format.html { redirect_to @blog, notice: 'Blog updated pewa mbili ' }
         
@@ -86,7 +83,7 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed. #{undo_link}"}
       format.json { head :no_content }
     end
   end
@@ -99,14 +96,22 @@ class BlogsController < ApplicationController
    end
 
    redirect_to blogs_url
+
+
  end
+
 
  
  # papertrail
 
- def history
-  @versions = PaperTrail::Version.order('created_at DESC')
-end
+
+  def history
+    @blog = Blog.find(params[:id])
+    @versions = @blog.try(:versions).order(created_at: :desc) unless
+    @blog.blank? || @blog.versions.blank?
+  end
+
+
 
 def undo
   @blog_version = PaperTrail::Version.find_by_id(params[:id])
@@ -126,12 +131,15 @@ def undo
     end
   end
 
+
   private
 
+  def undo_link
+    view_context.link_to("undo", revert_version_path(@blog.versions.last), method: :post)
+  end
+
   def make_undo_link
-   
     view_context.link_to 'Undo that plz!', undo_path(@blog.versions.last), method: :post
-    
   end
 
   # Use callbacks to share common setup or constraints between actions.
