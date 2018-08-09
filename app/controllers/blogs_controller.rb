@@ -6,17 +6,27 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.page(params[:page]).per(5)
+    if logged_in?(:site_admin)
+      @blogs = Blog.recent.page(params[:page]).per(5)
+
+    else
+      @blogs = Blog.published.recent.page(params[:page]).per(5)
+
+    end
     @page_title = "Dan | My Blog"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @blog = Blog.includes(:comments).friendly.find(params[:id])
-    @comment = Comment.new
-    @blog = Blog.friendly.find(params[:id])
-    @page_title = @blog.title
+    if logged_in?(:site_admin) || @blog.published?
+      @blog = Blog.includes(:comments).friendly.find(params[:id])
+      @comment = Comment.new
+      @blog = Blog.friendly.find(params[:id])
+      @page_title = @blog.title
+    else
+      redirect_to blog_path, notice: "Unauthorized"
+    end
   end
 
   # GET /blogs/new
@@ -39,7 +49,7 @@ class BlogsController < ApplicationController
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog created, lala sasa' }
 
-       
+        
         
       else
         format.html { render :new }
@@ -84,27 +94,27 @@ class BlogsController < ApplicationController
   def toggle_status
     if @blog.published? 
      @blog.draft!
-    elsif @blog.draft? 
+   elsif @blog.draft? 
      @blog.published!
-    end
+   end
 
-    redirect_to blogs_url
-  end
+   redirect_to blogs_url
+ end
 
  
  # papertrail
 
-  def history
+ def history
   @versions = PaperTrail::Version.order('created_at DESC')
-  end
+end
 
-  def undo
-    @blog_version = PaperTrail::Version.find_by_id(params[:id])
+def undo
+  @blog_version = PaperTrail::Version.find_by_id(params[:id])
 
-    begin
-      if @blog_version.reify
-        @blog_version.reify.save
-      else
+  begin
+    if @blog_version.reify
+      @blog_version.reify.save
+    else
         # For undoing the create action
         @blog_version.item.destroy
       end
