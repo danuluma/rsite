@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :topics, only: [:index, :show]
 
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
   resources :portfolios, except: [:show] do
@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get "contact", to: "pages#contact"
   get "about-me", to: "pages#about"
 
- 
+  
+
+  post "versions/:id/revert", to: "versions#revert", as: :revert_version
+
+
 
   resources :blogs do
     member do
