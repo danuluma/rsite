@@ -46,13 +46,13 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
-    # byebug 
+    # byebug
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: "Blog created, lala sasa #{undo_link}" }
 
       else
-        format.html { render :new }  
+        format.html { render :new }
       end
     end
   end
@@ -72,10 +72,10 @@ class BlogsController < ApplicationController
         format.html { redirect_to @blog, notice: "Post was updated! #{undo_link}" }
 
         # format.html { redirect_to @blog, notice: 'Blog updated pewa mbili ' }
-        
+
       else
         format.html { render :edit }
-        
+
       end
     end
   end
@@ -91,9 +91,9 @@ class BlogsController < ApplicationController
   end
 
   def toggle_status
-    if @blog.published? 
+    if @blog.published?
      @blog.draft!
-   elsif @blog.draft? 
+   elsif @blog.draft?
      @blog.published!
    end
 
@@ -103,7 +103,7 @@ class BlogsController < ApplicationController
  end
 
 
- 
+
  # papertrail
 
 
@@ -156,6 +156,6 @@ def undo
 
   def set_sidebar_topics
     @set_sidebar_topics = Topic.with_blogs
-    
+
   end
 end

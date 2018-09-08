@@ -10,7 +10,7 @@ module ApplicationCable
       guest.last_name = "User"
       guest.email = "guest@user.com"
       guest
-      
+
     end
 
     def connect
@@ -18,7 +18,7 @@ module ApplicationCable
       logger.add_tags "ActionCable", current_user.email
       logger.add_tags "ActionCable", current_user.id
 
-      
+
     end
 
     protected

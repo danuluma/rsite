@@ -85,5 +85,13 @@ puts "9 Portfolio items created"
     name: "Technology #{technology}"
     )
 end
+20.times do Portfolio.create(
+title: Faker::Book.title,
+subtitle: Faker::FamilyGuy.quote,
+body: Faker::Lorem.sentence
+
+)
+puts "@@@@@"
+end
 
 puts "3 Technologies items created"

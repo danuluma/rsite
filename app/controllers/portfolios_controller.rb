@@ -15,12 +15,11 @@ class PortfoliosController < ApplicationController
 
   def angular
     @angular_portfolio_items = Portfolio.angular
-    
+
   end
 
   def new
     @portfolio_item = Portfolio.new
-
   end
 
 
@@ -30,10 +29,10 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio_item.save()
         format.html { redirect_to portfolios_path, notice: 'Portfolio created, lala sasa' }
-        
+
       else
         format.html { render :new }
-        
+
       end
     end
   end
@@ -49,10 +48,10 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice: 'Portfolio updated, lala sasa' }
-        
+
       else
         format.html { render :edit }
-        
+
       end
     end
   end
@@ -78,10 +77,10 @@ class PortfoliosController < ApplicationController
 
   def portfolio_params
     params.require(:portfolio).permit(:title,
-                                      :subtitle, 
+                                      :subtitle,
                                       :body,
                                       :thumb_image,
-                                      :main_image, 
+                                      :main_image,
                                       technologies_attributes: [:id, :name, :_destroy])
   end
 
@@ -89,3 +88,7 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.find(params[:id])
   end
 end
+
+# flash[:success] = "Agency was successfully updated. #{undo_link}"
+#       redirect_to @agency
+#       render 'new'
