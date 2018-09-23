@@ -96,10 +96,7 @@ class BlogsController < ApplicationController
    elsif @blog.draft?
      @blog.published!
    end
-
    redirect_to blogs_url
-
-
  end
 
 
