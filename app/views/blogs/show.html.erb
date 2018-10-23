@@ -10,7 +10,6 @@
     <%= link_to "Home", root_path, class: "breadcrumb-item" %>
     <%= link_to @blog.topic.title, topic_path(@blog.topic), class: "breadcrumb-item" %>
     <span class="breadcrumb-item active"> <%= @blog.title %> </span>
-    
   </nav>
 
   <p><%= @blog.topic.title %></p>
@@ -18,7 +17,7 @@
   <p>
     <%= markdown @blog.body %>
   </p>
- 
+
 <!--   Start of comment form
 -->
 <%= render "comments/comment_form" %>

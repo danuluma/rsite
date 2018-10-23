@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   user_signed_in? ? current_user.id : 'Guest'
   end
 
-  
+
 end
 
