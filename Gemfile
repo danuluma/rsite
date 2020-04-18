@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'faker'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,7 +60,7 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
-gem 'petergate'
+gem 'petergate', '~> 2.0', '>= 2.0.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari'
 
