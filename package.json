@@ -1,5 +1,8 @@
 {
-  "name": "DevcampProject",
+  "name": "Danns",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
 }

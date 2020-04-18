@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+# require 'faker'
 
 User.create!(
   email: "test@test.com",
@@ -87,7 +87,7 @@ puts "9 Portfolio items created"
 end
 20.times do Portfolio.create(
 title: Faker::Book.title,
-subtitle: Faker::FamilyGuy.quote,
+subtitle: Faker::TvShows::FamilyGuy.quote,
 body: Faker::Lorem.sentence
 
 )
