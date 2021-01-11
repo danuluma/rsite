@@ -82,7 +82,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'gritter', '~> 1.2'
 gem 'paper_trail', '~> 10.3', '>= 10.3.1'
 gem 'coderay', '~> 1.1', '>= 1.1.2'
-gem 'redcarpet', '~> 3.4'
+gem 'redcarpet', '~> 3.5'
 # gem 'sprockets-rails', '2.3.3'
 
 
