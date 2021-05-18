@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0', '>= 6.0.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'faker', '~> 2.11'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use Uglifier as compressor for JavaScript assets
